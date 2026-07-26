@@ -1,0 +1,10 @@
+.next/
+node_modules/
+playwright-report/
+test-results/
+output/playwright/
+tsconfig.tsbuildinfo
+.env*
+!.env.example
+!public/screenshots/
+!public/screenshots/**
