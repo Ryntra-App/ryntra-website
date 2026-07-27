@@ -143,7 +143,7 @@ test("Inside Ryntra switches between Android and iOS captures", async ({
     "true",
   );
   await expect(page.getByAltText("Ryntra dashboard workspace on iOS")).toBeVisible();
-  await expect(page.locator(".showcase-rail figure")).toHaveCount(5);
+  await expect(page.locator(".showcase-rail figure")).toHaveCount(4);
   await expect(page.locator(".showcase-rail figcaption strong").first()).toHaveText(
     "Dashboard",
   );

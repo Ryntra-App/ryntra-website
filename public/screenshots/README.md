@@ -10,7 +10,6 @@ without code changes.
 - `projects.png` — derived from `docs/screenshots/developer-panel.png`
 - `analytics.png` — derived from `docs/screenshots/analytics.png`
 - `teams.png` — derived from `docs/screenshots/teams.png`
-- `notifications.png` — notification workspace
 - `android.webp` — derived from `docs/screenshots/glass-theme.png`
 
 ## Real iOS captures
@@ -19,6 +18,4 @@ without code changes.
 - `ios-projects.png` — projects workspace
 - `ios-analytics.png` — analytics workspace
 - `ios-teams.png` — teams workspace
-- `ios-notifications.png` — notification settings
-
 Run `node scripts/prepare-site-assets.mjs` after updating the source captures.

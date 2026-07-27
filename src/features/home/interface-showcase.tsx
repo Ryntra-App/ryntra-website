@@ -33,13 +33,6 @@ const androidInterfaces = [
     image: "/screenshots/teams.png",
     alt: "Ryntra teams workspace",
   },
-  {
-    id: "notifications",
-    label: "Notifications",
-    description: "Reviews, updates and activity",
-    image: "/screenshots/notifications.png",
-    alt: "Ryntra notifications workspace",
-  },
 ] as const;
 
 const iosInterfaces = [
@@ -70,13 +63,6 @@ const iosInterfaces = [
     description: "Organizations and invitations",
     image: "/screenshots/ios-teams.png",
     alt: "Ryntra teams workspace on iOS",
-  },
-  {
-    id: "ios-notifications",
-    label: "Notifications",
-    description: "Reviews, updates and activity",
-    image: "/screenshots/ios-notifications.png",
-    alt: "Ryntra notification settings on iOS",
   },
 ] as const;
 
