@@ -654,23 +654,42 @@ body {
 
 .release-availability {
   display: grid;
-  gap: 4px 18px;
-  grid-template-columns: repeat(2, auto);
+  min-width: 220px;
+  gap: 11px;
   color: var(--text-secondary);
   font-size: 11px;
 }
 
-.release-availability span {
-  display: inline-flex;
+.release-build {
+  display: flex;
   align-items: center;
-  gap: 5px;
+  justify-content: space-between;
+  gap: 18px;
 }
 
-.release-availability .release-version {
-  grid-column: 1 / -1;
+.release-build strong {
   color: var(--text-primary);
   font-size: 13px;
   font-weight: 650;
+}
+
+.release-build time {
+  white-space: nowrap;
+}
+
+.release-availability ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+  gap: 7px 16px;
+  list-style: none;
+}
+
+.release-availability li {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .final-download .button {
@@ -939,15 +958,22 @@ body {
 
   .final-download {
     margin-bottom: 72px;
-    padding-top: 28px;
-    padding-bottom: 28px;
+    padding: 28px var(--page-gutter);
     grid-template-columns: 1fr;
-    gap: 26px;
+    gap: 24px;
   }
 
   .release-availability,
   .final-download .button {
     grid-row: auto;
+  }
+
+  .release-availability {
+    width: 100%;
+    min-width: 0;
+    padding-block: 14px;
+    border-top: 1px solid var(--separator);
+    border-bottom: 1px solid var(--separator);
   }
 
   .final-download .button {

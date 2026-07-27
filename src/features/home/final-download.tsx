@@ -20,18 +20,26 @@ export function FinalDownload({ release }: FinalDownloadProps) {
         </p>
       </div>
       <div className="release-availability">
-        <span className="release-version">
-          {release ? `Version ${release.tag}` : "Release status unavailable"}
-        </span>
-        {release ? <span>{formatDate(release.publishedAt)}</span> : null}
-        <span>
-          <Smartphone aria-hidden="true" size={16} />
-          Android
-        </span>
-        <span>
-          <Apple aria-hidden="true" size={16} />
-          iOS sideload
-        </span>
+        <div className="release-build">
+          <strong>
+            {release ? `Version ${release.tag}` : "Release status unavailable"}
+          </strong>
+          {release ? (
+            <time dateTime={release.publishedAt}>
+              {formatDate(release.publishedAt)}
+            </time>
+          ) : null}
+        </div>
+        <ul aria-label="Available platforms">
+          <li>
+            <Smartphone aria-hidden="true" size={16} />
+            Android
+          </li>
+          <li>
+            <Apple aria-hidden="true" size={16} />
+            iOS sideload
+          </li>
+        </ul>
       </div>
       <PlatformCta />
     </section>
