@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { Github } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { BrandMark } from "./brand-mark";
@@ -28,13 +29,21 @@ export function SiteHeader() {
         </Link>
         <nav className="desktop-navigation" aria-label="Primary navigation">
           <Link href="/#features">{en.navigation.features}</Link>
-          <Link href="/#analytics">{en.navigation.analytics}</Link>
-          <Link href="/download">{en.navigation.download}</Link>
           <Link href="/changelog">{en.navigation.changelog}</Link>
-          <ExternalLink href={site.github}>{en.navigation.github}</ExternalLink>
+          <Link href="/docs">{en.navigation.docs}</Link>
         </nav>
         <div className="header-actions">
           <ThemeSwitcher />
+          <ExternalLink
+            className="icon-button github-button"
+            href={site.github}
+            aria-label="Open Ryntra on GitHub"
+          >
+            <Github aria-hidden="true" size={19} />
+          </ExternalLink>
+          <Link className="header-download" href="/download">
+            Download
+          </Link>
           <MobileNavigation />
         </div>
       </div>

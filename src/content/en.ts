@@ -9,30 +9,30 @@ export const en = {
     docs: "Docs",
   },
   hero: {
-    eyebrow: "Native Modrinth workspace",
-    title: "Your Modrinth workspace,\nwherever you are.",
+    eyebrow: "Native workspace for Modrinth creators",
+    title: "Manage Modrinth\nfrom anywhere.",
     description:
-      "Manage projects, releases, teams and analytics from a native Android and iOS experience.",
+      "Projects, releases, analytics, teams and notifications in a focused Android and iOS app.",
   },
   sections: {
     projects: {
       eyebrow: "Project management",
-      title: "Keep every release moving.",
+      title: "Projects stay ready to ship.",
       body: "Review project status, edit metadata and descriptions, manage versions, files and dependencies, and keep galleries current from one focused workspace.",
     },
     analytics: {
       eyebrow: "Analytics",
-      title: "See what changed. Know where to look next.",
+      title: "Analytics you can act on.",
       body: "Explore downloads, views, playtime, revenue and per-project trends across clear date ranges. Private payout data appears only when Modrinth makes it available.",
     },
     teams: {
       eyebrow: "Teams and organizations",
-      title: "People, permissions and projects in one place.",
+      title: "Keep teams in sync.",
       body: "Manage organizations, project teams, members, ownership and invitations with permission-aware controls.",
     },
     notifications: {
       eyebrow: "Notifications",
-      title: "Go from an update to the project behind it.",
+      title: "Open the update that matters.",
       body: "Ryntra supports local background checks and optional instant delivery through a limited relay. Related projects and invitations open directly from notifications.",
     },
     native: {

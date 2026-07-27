@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element -- Release notes may reference arbitrary remote Markdown media. */
 import type { ComponentPropsWithoutRef } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -18,9 +19,19 @@ function SafeLink(props: ComponentPropsWithoutRef<"a">) {
 }
 
 function SafeImage(props: ComponentPropsWithoutRef<"img">) {
+  if (typeof props.src !== "string" || !props.src.trim()) {
+    return null;
+  }
+
   // Markdown media has unknown remote dimensions, so reserve a stable block.
-  // eslint-disable-next-line @next/next/no-img-element
-  return <img {...props} loading="lazy" alt={props.alt ?? ""} />;
+  return (
+    <img
+      {...props}
+      src={props.src}
+      loading="lazy"
+      alt={props.alt ?? ""}
+    />
+  );
 }
 
 export function ReleaseMarkdown({ children }: ReleaseMarkdownProps) {

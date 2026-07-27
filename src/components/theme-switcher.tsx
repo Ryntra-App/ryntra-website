@@ -1,13 +1,13 @@
 "use client";
 
-import { Check, Laptop, Moon, Sun } from "lucide-react";
+import { Check, ChevronDown, Monitor, Moon, Sun } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 
 type Theme = "system" | "light" | "dark";
 
 const choices = [
-  { value: "system", label: "System", icon: Laptop },
+  { value: "system", label: "System", icon: Monitor },
   { value: "light", label: "Light", icon: Sun },
   { value: "dark", label: "Dark", icon: Moon },
 ] as const;
@@ -56,12 +56,13 @@ export function ThemeSwitcher() {
   }, []);
 
   const CurrentIcon =
-    theme === "dark" ? Moon : theme === "light" ? Sun : Laptop;
+    theme === "dark" ? Moon : theme === "light" ? Sun : Monitor;
+  const currentLabel = choices.find((choice) => choice.value === theme)?.label;
 
   return (
     <div className="theme-switcher" ref={rootRef}>
       <button
-        className="icon-button"
+        className="theme-trigger"
         type="button"
         aria-label="Choose color theme"
         aria-expanded={isOpen}
@@ -69,6 +70,8 @@ export function ThemeSwitcher() {
         onClick={() => setIsOpen((value) => !value)}
       >
         <CurrentIcon aria-hidden="true" size={18} />
+        <span>{currentLabel}</span>
+        <ChevronDown aria-hidden="true" size={14} />
       </button>
       <AnimatePresence>
         {isOpen ? (

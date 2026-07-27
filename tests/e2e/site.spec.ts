@@ -3,7 +3,7 @@ import { expect, test } from "@playwright/test";
 test("home page opens with the primary product actions", async ({ page }) => {
   await page.goto("/");
   await expect(
-    page.getByRole("heading", { name: /Your Modrinth workspace/ }),
+    page.getByRole("heading", { name: /Manage Modrinth from anywhere/ }),
   ).toBeVisible();
   await expect(page.locator('.hero-actions a[href^="/download"]')).toBeVisible();
   await expect(page.locator("#features")).toBeVisible();
@@ -122,6 +122,26 @@ test("reduced motion preference is respected", async ({ page }) => {
 
 test("captures the polished responsive home page", async ({ page }, testInfo) => {
   await page.goto("/");
+  const heroImage = page.locator(".hero-screenshot img");
+  await expect(heroImage).toHaveJSProperty("complete", true);
+  await expect
+    .poll(() =>
+      page.evaluate(() =>
+        [".hero-description", ".hero-actions", ".hero-visual"].every(
+          (selector) =>
+            Number(
+              getComputedStyle(document.querySelector(selector) as Element)
+                .opacity,
+            ) > 0.99,
+        ),
+      ),
+    )
+    .toBe(true);
+  await page.screenshot({
+    path: `output/playwright/home-${testInfo.project.name}-viewport.png`,
+    fullPage: false,
+  });
+
   const lazyImages = page.locator(
     ".feature-visual img, .platform-pair img, .people-panel img",
   );
@@ -130,7 +150,6 @@ test("captures the polished responsive home page", async ({ page }, testInfo) =>
     await image.scrollIntoViewIfNeeded();
     await expect(image).toHaveJSProperty("complete", true);
   }
-  await page.evaluate(() => window.scrollTo({ top: 0, behavior: "auto" }));
   await page.screenshot({
     path: `output/playwright/home-${testInfo.project.name}.png`,
     fullPage: true,

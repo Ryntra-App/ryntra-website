@@ -12,8 +12,8 @@ A Modrinth creator checks Ryntra between desktop work sessions, often on a
 phone, tablet or laptop in either daylight or a dim room. The site follows the
 system color scheme by default and gives the user an explicit override.
 
-This is a brand surface with product behavior. The first viewport is a product
-poster; every section after it explains one real workflow.
+This is a brand surface with product behavior. The first viewport introduces
+the real interface immediately; every section after it explains one workflow.
 
 ## Tokens
 
@@ -45,7 +45,8 @@ platform system stack to preserve the native relationship.
 - Use layout, type and separators before adding a container.
 - Cards are reserved for releases, files or platform choices that are genuinely
   separate objects.
-- Keep the hero edge-to-edge and asymmetrical. Never put it inside a card.
+- Keep the hero direct and product-first. Never hide the interface behind
+  decorative objects or an oversized duplicate wordmark.
 - Product screenshots stay real. Missing captures use explicit labeled
   placeholders and never fabricated UI.
 - Glass is allowed only for fixed navigation, menus, dialogs and floating
@@ -54,7 +55,7 @@ platform system stack to preserve the native relationship.
 ## Motion rules
 
 - Hero content enters as one orchestrated sequence.
-- Screenshots use no more than 36 px of scroll-linked depth.
+- Screenshots remain stable during scrolling so product UI stays readable.
 - Menus, theme selection and release dialogs use fast ease-out transitions.
 - Section content remains visible before JavaScript and during slow loading.
 - `prefers-reduced-motion` removes movement and keeps quick opacity changes.
