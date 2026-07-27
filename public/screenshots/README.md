@@ -9,11 +9,14 @@ without code changes.
 - `projects.webp` — derived from `docs/screenshots/developer-panel.png`
 - `analytics.webp` — derived from `docs/screenshots/analytics.png`
 - `teams.webp` — derived from `docs/screenshots/teams.png`
+- `notifications.webp` — notification workspace
 - `android.webp` — derived from `docs/screenshots/glass-theme.png`
 
-## Replace before the next visual refresh
+## Real iOS captures
 
-- `notifications.webp` — explicit placeholder; replace with an official notification screen
-- `ios.webp` — explicit placeholder; replace with an official SwiftUI screen
+- `ios-projects.png` — projects workspace
+- `ios-analytics.png` — analytics workspace
+- `ios-teams.png` — teams workspace
+- `ios-notifications.png` — notification settings
 
 Run `node scripts/prepare-site-assets.mjs` after updating the source captures.

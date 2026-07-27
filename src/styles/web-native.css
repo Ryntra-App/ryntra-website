@@ -410,10 +410,6 @@ body {
   scroll-snap-align: start;
 }
 
-.showcase-rail.is-ios {
-  grid-auto-columns: minmax(340px, 48%);
-}
-
 .showcase-image {
   position: relative;
   height: 470px;
@@ -905,10 +901,6 @@ body {
 
   .showcase-rail {
     grid-auto-columns: 82%;
-  }
-
-  .showcase-rail.is-ios {
-    grid-auto-columns: 88%;
   }
 
   .showcase-image {

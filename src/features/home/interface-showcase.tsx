@@ -37,11 +37,32 @@ const androidInterfaces = [
 
 const iosInterfaces = [
   {
-    id: "ios-workspace",
-    label: "iOS workspace",
-    description: "Native SwiftUI interface",
-    image: "/screenshots/ios.webp",
-    alt: "Ryntra iOS workspace",
+    id: "ios-projects",
+    label: "Projects",
+    description: "Status, releases and metadata",
+    image: "/screenshots/ios-projects.png",
+    alt: "Ryntra projects workspace on iOS",
+  },
+  {
+    id: "ios-analytics",
+    label: "Analytics",
+    description: "Downloads, views and revenue",
+    image: "/screenshots/ios-analytics.png",
+    alt: "Ryntra analytics workspace on iOS",
+  },
+  {
+    id: "ios-teams",
+    label: "Teams",
+    description: "Organizations and invitations",
+    image: "/screenshots/ios-teams.png",
+    alt: "Ryntra teams workspace on iOS",
+  },
+  {
+    id: "ios-notifications",
+    label: "Notifications",
+    description: "Reviews, updates and activity",
+    image: "/screenshots/ios-notifications.png",
+    alt: "Ryntra notification settings on iOS",
   },
 ] as const;
 
@@ -109,16 +130,16 @@ export function InterfaceShowcase() {
             ))}
           </nav>
 
-          <div className={`showcase-rail ${platform === "ios" ? "is-ios" : ""}`}>
+          <div className="showcase-rail">
             {interfaces.map((item) => (
               <figure id={`surface-${item.id}`} key={item.id}>
                 <div className="showcase-image">
                   <Image
                     src={item.image}
                     alt={item.alt}
-                    width={810}
-                    height={1800}
-                    sizes={platform === "ios" ? "(max-width: 620px) 84vw, 520px" : "(max-width: 620px) 78vw, 360px"}
+                    width={platform === "ios" ? 1206 : 810}
+                    height={platform === "ios" ? 2622 : 1800}
+                    sizes="(max-width: 620px) 78vw, 360px"
                   />
                 </div>
                 <figcaption>
