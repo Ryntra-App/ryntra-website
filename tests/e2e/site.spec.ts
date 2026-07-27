@@ -142,8 +142,11 @@ test("Inside Ryntra switches between Android and iOS captures", async ({
     "aria-selected",
     "true",
   );
-  await expect(page.getByAltText("Ryntra projects workspace on iOS")).toBeVisible();
-  await expect(page.locator(".showcase-rail figure")).toHaveCount(4);
+  await expect(page.getByAltText("Ryntra dashboard workspace on iOS")).toBeVisible();
+  await expect(page.locator(".showcase-rail figure")).toHaveCount(5);
+  await expect(page.locator(".showcase-rail figcaption strong").first()).toHaveText(
+    "Dashboard",
+  );
 });
 
 test("captures the polished responsive home page", async ({ page }, testInfo) => {

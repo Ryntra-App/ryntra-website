@@ -5,6 +5,7 @@ without code changes.
 
 ## Real Android captures
 
+- `dashboard.png` — dashboard workspace
 - `hero-mobile.webp` — derived from `docs/screenshots/developer-panel.png`
 - `projects.png` — derived from `docs/screenshots/developer-panel.png`
 - `analytics.png` — derived from `docs/screenshots/analytics.png`
@@ -14,6 +15,7 @@ without code changes.
 
 ## Real iOS captures
 
+- `ios-dashboard.png` — dashboard workspace
 - `ios-projects.png` — projects workspace
 - `ios-analytics.png` — analytics workspace
 - `ios-teams.png` — teams workspace

@@ -6,6 +6,13 @@ import { useState } from "react";
 
 const androidInterfaces = [
   {
+    id: "dashboard",
+    label: "Dashboard",
+    description: "Portfolio activity at a glance",
+    image: "/screenshots/dashboard.png",
+    alt: "Ryntra dashboard workspace on Android",
+  },
+  {
     id: "projects",
     label: "Projects",
     description: "Status, releases and metadata",
@@ -36,6 +43,13 @@ const androidInterfaces = [
 ] as const;
 
 const iosInterfaces = [
+  {
+    id: "ios-dashboard",
+    label: "Dashboard",
+    description: "Portfolio activity at a glance",
+    image: "/screenshots/ios-dashboard.png",
+    alt: "Ryntra dashboard workspace on iOS",
+  },
   {
     id: "ios-projects",
     label: "Projects",
