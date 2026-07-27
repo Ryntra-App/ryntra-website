@@ -2,9 +2,9 @@
 
 ## Visual thesis
 
-Ryntra's native interface translated into a spacious browser composition:
-system surfaces, large direct typography, the product's green accent, real
-screenshots and glass only where a native layer would need depth.
+Ryntra is a web-native React product site with a strict developer-tool grid:
+compact browser controls, direct copy, real application surfaces and the
+product's green used only for state and identity.
 
 ## Scene and register
 
@@ -12,8 +12,9 @@ A Modrinth creator checks Ryntra between desktop work sessions, often on a
 phone, tablet or laptop in either daylight or a dim room. The site follows the
 system color scheme by default and gives the user an explicit override.
 
-This is a brand surface with product behavior. The first viewport introduces
-the real interface immediately; every section after it explains one workflow.
+This is a product website, not a mobile interface stretched into a browser.
+The first viewport states the product and exposes its working surfaces; later
+sections operate as an index rather than a marketing presentation.
 
 ## Tokens
 
@@ -41,20 +42,20 @@ platform system stack to preserve the native relationship.
 
 ## Composition rules
 
-- One section, one job, one dominant product image.
-- Use layout, type and separators before adding a container.
+- One section, one job, one dominant piece of information.
+- Use a strict grid, compact labels and separators before adding a container.
 - Cards are reserved for releases, files or platform choices that are genuinely
   separate objects.
-- Keep the hero direct and product-first. Never hide the interface behind
-  decorative objects or an oversized duplicate wordmark.
+- Keep the hero direct and factual. Avoid four-line mobile headlines,
+  aspirational slogans and duplicated platform copy.
 - Product screenshots stay real. Missing captures use explicit labeled
   placeholders and never fabricated UI.
-- Glass is allowed only for fixed navigation, menus, dialogs and floating
-  controls.
+- Product screenshots appear as browser content, never inside fake phone
+  hardware or decorative device mockups.
+- Glass is allowed only for menus and dialogs.
 
 ## Motion rules
 
-- Hero content enters as one orchestrated sequence.
 - Screenshots remain stable during scrolling so product UI stays readable.
 - Menus, theme selection and release dialogs use fast ease-out transitions.
 - Section content remains visible before JavaScript and during slow loading.
@@ -68,6 +69,8 @@ Reject changes that introduce:
 - purple or blue decorative gradients;
 - glowing background blobs or decorative grids;
 - a centered generic SaaS hero;
+- mobile-native surfaces copied literally into the website chrome;
+- vague marketing lines where a product label would be clearer;
 - identical three-card feature rows;
 - a dashboard made from fake metrics;
 - stock dashboards or fabricated Ryntra screens;

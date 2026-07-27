@@ -13,7 +13,7 @@ export function FinalDownload({ release }: FinalDownloadProps) {
     <section className="final-download">
       <div>
         <p className="eyebrow">Latest release</p>
-        <h2>Take your workspace with you.</h2>
+        <h2>Get the latest Ryntra build.</h2>
         <p>
           Android APK and unsigned iOS IPA builds are published through GitHub
           Releases.

@@ -9,10 +9,10 @@ export const en = {
     docs: "Docs",
   },
   hero: {
-    eyebrow: "Native workspace for Modrinth creators",
-    title: "Manage Modrinth\nfrom anywhere.",
+    eyebrow: "Projects · Analytics · Teams · Notifications",
+    title: "Modrinth, away from the dashboard.",
     description:
-      "Projects, releases, analytics, teams and notifications in a focused Android and iOS app.",
+      "Manage projects, releases, analytics, teams and notifications from your phone.",
   },
   sections: {
     projects: {
@@ -43,7 +43,7 @@ export const en = {
   },
   finalCta: {
     eyebrow: "Latest release",
-    title: "Take your workspace with you.",
+    title: "Get the latest Ryntra build.",
     body: "Android APK and unsigned iOS IPA builds are published through GitHub Releases.",
   },
 } as const;
