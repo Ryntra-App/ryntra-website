@@ -9,17 +9,24 @@ test("home page opens with the primary product actions", async ({ page }) => {
     page.locator('.web-hero-actions a[href^="/download"]'),
   ).toBeVisible();
   await expect(page.locator("#features")).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: /Switch to (light|dark) theme/ }).locator("svg"),
+  ).toBeVisible();
+  await expect(page.locator(".motion-section").first()).toHaveCSS("opacity", "1");
 });
 
 test("theme choice persists and is applied on the next document", async ({
   page,
 }) => {
+  await page.emulateMedia({ colorScheme: "light" });
   await page.goto("/");
-  await page.getByRole("button", { name: "Choose color theme" }).click();
-  await page.getByRole("menuitemradio", { name: "Dark" }).click();
+  await page.getByRole("button", { name: "Switch to dark theme" }).click();
   await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
   await page.reload();
   await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+  await expect(
+    page.getByRole("button", { name: "Switch to light theme" }),
+  ).toBeVisible();
   await expect
     .poll(() =>
       page.evaluate(() => getComputedStyle(document.documentElement).colorScheme),
@@ -27,13 +34,13 @@ test("theme choice persists and is applied on the next document", async ({
     .toBe("dark");
 });
 
-test("system theme is selected before hydration without an incorrect class", async ({
+test("system preference resolves to the matching visual theme", async ({
   browser,
 }) => {
   const context = await browser.newContext({ colorScheme: "dark" });
   const page = await context.newPage();
   await page.goto("/");
-  await expect(page.locator("html")).toHaveAttribute("data-theme", "system");
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
   await expect
     .poll(() =>
       page.evaluate(() => getComputedStyle(document.documentElement).colorScheme),
@@ -117,9 +124,25 @@ test("reduced motion preference is respected", async ({ page }) => {
   );
   expect(matches).toBe(true);
   const duration = await page
-    .getByRole("button", { name: "Choose color theme" })
+    .getByRole("button", { name: /Switch to (light|dark) theme/ })
     .evaluate((element) => getComputedStyle(element).transitionDuration);
   expect(duration).toMatch(/0\.00001s|1e-05s|0s/);
+});
+
+test("Inside Ryntra switches between Android and iOS captures", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.getByRole("tab", { name: /Android/ })).toHaveAttribute(
+    "aria-selected",
+    "true",
+  );
+  await page.getByRole("tab", { name: /iOS/ }).click();
+  await expect(page.getByRole("tab", { name: /iOS/ })).toHaveAttribute(
+    "aria-selected",
+    "true",
+  );
+  await expect(page.getByAltText("Ryntra iOS workspace")).toBeVisible();
 });
 
 test("captures the polished responsive home page", async ({ page }, testInfo) => {

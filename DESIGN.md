@@ -10,7 +10,8 @@ product's green used only for state and identity.
 
 A Modrinth creator checks Ryntra between desktop work sessions, often on a
 phone, tablet or laptop in either daylight or a dim room. The site follows the
-system color scheme by default and gives the user an explicit override.
+system color scheme on first visit and gives the user a direct light/dark
+toggle.
 
 This is a product website, not a mobile interface stretched into a browser.
 The first viewport states the product and exposes its working surfaces; later
@@ -57,7 +58,11 @@ platform system stack to preserve the native relationship.
 ## Motion rules
 
 - Screenshots remain stable during scrolling so product UI stays readable.
-- Menus, theme selection and release dialogs use fast ease-out transitions.
+- The hero uses a single staggered word reveal and a restrained rule sweep.
+- Android/iOS screenshot switching uses directional movement and a shared
+  selection indicator.
+- Theme selection and release dialogs use fast ease-out transitions.
+- Section entrances run once on load and never depend on scroll observers.
 - Section content remains visible before JavaScript and during slow loading.
 - `prefers-reduced-motion` removes movement and keeps quick opacity changes.
 - No bounce, elastic motion, endless floating or scroll-jacking.

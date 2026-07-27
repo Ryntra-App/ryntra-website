@@ -38,7 +38,6 @@ export function SiteFooter() {
       </div>
       <div className="footer-base">
         <span>© {new Date().getFullYear()} Ryntra contributors</span>
-        <span>English · Russian architecture ready</span>
       </div>
     </footer>
   );

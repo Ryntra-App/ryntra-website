@@ -25,7 +25,7 @@ export function ContributorsSection({
       aria-labelledby="contributors-title"
     >
       <div className="contributors-heading">
-        <p className="eyebrow">Open source</p>
+        <p className="eyebrow">Contributors</p>
         <h2 id="contributors-title">Built in the open.</h2>
         <p>
           Ryntra grows through code, translations, fixes and careful feedback

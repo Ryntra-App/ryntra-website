@@ -48,7 +48,7 @@ const topics = [
   {
     icon: Download,
     title: "Updates",
-    body: "Android builds are APK files. iOS builds are unsigned IPA files for sideloading. Simulator ZIP files cannot be installed on a physical device.",
+    body: "Android builds are APK files. iOS builds are unsigned IPA files for sideloading.",
   },
 ];
 
@@ -88,12 +88,19 @@ export default function DocsPage() {
         })}
       </div>
       <section className="docs-callout">
-        <h2>Need implementation details?</h2>
-        <p>
-          Notification privacy and deployment notes, translation instructions,
-          source code and issue tracking live in the repository.
-        </p>
-        <ExternalLink href={`${site.github}/tree/main/docs`} showIcon>
+        <div>
+          <p className="section-label">Open documentation</p>
+          <h2>Repository reference</h2>
+          <p>
+            Notification privacy, deployment notes, translation instructions,
+            source code and issue tracking live in the repository.
+          </p>
+        </div>
+        <ExternalLink
+          className="button button-secondary"
+          href={`${site.github}/tree/main/docs`}
+          showIcon
+        >
           Browse repository docs
         </ExternalLink>
       </section>

@@ -1,27 +1,52 @@
+"use client";
+
 import { Github } from "lucide-react";
+import { motion, useReducedMotion } from "motion/react";
 
 import { PlatformCta } from "./platform-cta";
 import { en } from "@/content/en";
 import { site } from "@/lib/site";
 
 export function Hero() {
+  const reduceMotion = useReducedMotion();
+  const title = en.hero.title.replace("\n", " ");
+  const words = title.split(" ");
+
   return (
     <section className="web-hero" aria-labelledby="hero-title">
       <div className="web-hero-main">
         <div className="web-hero-copy">
-          <p className="web-hero-kicker">
-            <span aria-hidden="true" />
-            Open source
-          </p>
-          <h1 id="hero-title">
-            {en.hero.title.split("\n").map((line) => (
-              <span key={line}>{line}</span>
+          <h1 id="hero-title" aria-label={title}>
+            {words.map((word, index) => (
+              <span className="hero-word-clip" aria-hidden="true" key={`${word}-${index}`}>
+                <motion.span
+                  className="hero-word"
+                  initial={{ opacity: 0, y: reduceMotion ? 0 : "105%" }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: reduceMotion ? 0 : 0.72,
+                    delay: reduceMotion ? 0 : 0.05 + index * 0.055,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                >
+                  {word}
+                </motion.span>
+              </span>
             ))}
           </h1>
         </div>
-        <div className="web-hero-aside">
+        <motion.div
+          className="web-hero-aside"
+          initial={{ opacity: 0, y: reduceMotion ? 0 : 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: reduceMotion ? 0 : 0.7,
+            delay: reduceMotion ? 0 : 0.38,
+            ease: [0.16, 1, 0.3, 1],
+          }}
+        >
           <p className="web-hero-eyebrow">
-          {en.hero.eyebrow}
+            {en.hero.eyebrow}
           </p>
           <p className="web-hero-description">{en.hero.description}</p>
           <div className="web-hero-actions">
@@ -36,14 +61,19 @@ export function Hero() {
               Source
             </a>
           </div>
-        </div>
+        </motion.div>
       </div>
-      <div className="web-hero-meta" aria-label="Platform support">
-        <span>Android 8+</span>
-        <span>iOS 16+</span>
-        <span>System light and dark modes</span>
-        <span>GitHub releases</span>
-      </div>
+      <motion.div
+        className="hero-signal"
+        aria-hidden="true"
+        initial={{ scaleX: reduceMotion ? 1 : 0 }}
+        animate={{ scaleX: 1 }}
+        transition={{
+          duration: reduceMotion ? 0 : 1,
+          delay: reduceMotion ? 0 : 0.58,
+          ease: [0.16, 1, 0.3, 1],
+        }}
+      />
     </section>
   );
 }
