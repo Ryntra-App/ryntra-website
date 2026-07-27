@@ -140,6 +140,7 @@ export function InterfaceShowcase() {
                     width={platform === "ios" ? 1206 : 810}
                     height={platform === "ios" ? 2622 : 1800}
                     sizes="(max-width: 620px) 78vw, 360px"
+                    unoptimized
                   />
                 </div>
                 <figcaption>
