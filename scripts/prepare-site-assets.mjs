@@ -11,20 +11,29 @@ await mkdir(screenshotDir, { recursive: true });
 
 const screenshotJobs = [
   ["developer-panel.png", "hero-mobile.webp"],
-  ["developer-panel.png", "projects.webp"],
-  ["analytics.png", "analytics.webp"],
-  ["teams.png", "teams.webp"],
   ["glass-theme.png", "android.webp"],
 ];
 
-await Promise.all(
-  screenshotJobs.map(([source, target]) =>
+const pngScreenshotJobs = [
+  ["developer-panel.png", "projects.png"],
+  ["analytics.png", "analytics.png"],
+  ["teams.png", "teams.png"],
+];
+
+await Promise.all([
+  ...screenshotJobs.map(([source, target]) =>
     sharp(path.join(appSource, "docs", "screenshots", source))
       .resize({ width: 810, withoutEnlargement: true })
       .webp({ quality: 82, effort: 5 })
       .toFile(path.join(screenshotDir, target)),
   ),
-);
+  ...pngScreenshotJobs.map(([source, target]) =>
+    sharp(path.join(appSource, "docs", "screenshots", source))
+      .resize({ width: 810, withoutEnlargement: true })
+      .png({ compressionLevel: 9 })
+      .toFile(path.join(screenshotDir, target)),
+  ),
+]);
 
 function placeholderSvg(label, note) {
   return Buffer.from(`
@@ -41,14 +50,9 @@ function placeholderSvg(label, note) {
   `);
 }
 
-await Promise.all([
-  sharp(placeholderSvg("Notifications", "Official screenshot needed"))
-    .webp({ quality: 88 })
-    .toFile(path.join(screenshotDir, "notifications.webp")),
-  sharp(placeholderSvg("iOS", "Official SwiftUI screenshot needed"))
-    .webp({ quality: 88 })
-    .toFile(path.join(screenshotDir, "ios.webp")),
-]);
+await sharp(placeholderSvg("Notifications", "Official screenshot needed"))
+  .png({ compressionLevel: 9 })
+  .toFile(path.join(screenshotDir, "notifications.png"));
 
 const logo = sharp(path.join(root, "public", "logo.png"));
 await Promise.all([

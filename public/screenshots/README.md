@@ -6,10 +6,10 @@ without code changes.
 ## Real Android captures
 
 - `hero-mobile.webp` — derived from `docs/screenshots/developer-panel.png`
-- `projects.webp` — derived from `docs/screenshots/developer-panel.png`
-- `analytics.webp` — derived from `docs/screenshots/analytics.png`
-- `teams.webp` — derived from `docs/screenshots/teams.png`
-- `notifications.webp` — notification workspace
+- `projects.png` — derived from `docs/screenshots/developer-panel.png`
+- `analytics.png` — derived from `docs/screenshots/analytics.png`
+- `teams.png` — derived from `docs/screenshots/teams.png`
+- `notifications.png` — notification workspace
 - `android.webp` — derived from `docs/screenshots/glass-theme.png`
 
 ## Real iOS captures
