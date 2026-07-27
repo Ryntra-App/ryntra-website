@@ -17,10 +17,18 @@ export default async function HomePage() {
     <>
       <Hero />
       <div className="web-home">
-        <MotionReveal><InterfaceShowcase /></MotionReveal>
-        <MotionReveal><CapabilityIndex /></MotionReveal>
-        <MotionReveal><ContributorsSection contributors={contributors} /></MotionReveal>
-        <MotionReveal><FinalDownload release={releases[0]} /></MotionReveal>
+        <MotionReveal>
+          <InterfaceShowcase />
+        </MotionReveal>
+        <MotionReveal>
+          <CapabilityIndex />
+        </MotionReveal>
+        <MotionReveal>
+          <ContributorsSection contributors={contributors} />
+        </MotionReveal>
+        <MotionReveal>
+          <FinalDownload release={releases[0]} />
+        </MotionReveal>
       </div>
     </>
   );

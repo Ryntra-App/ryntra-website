@@ -1,4 +1,7 @@
+"use client";
+
 import { Download, GitBranch } from "lucide-react";
+import { motion, useReducedMotion } from "motion/react";
 import Link from "next/link";
 
 import { ChangelogModal } from "./changelog-modal";
@@ -10,6 +13,8 @@ type ReleaseListProps = {
 };
 
 export function ReleaseList({ releases }: ReleaseListProps) {
+  const reduceMotion = useReducedMotion();
+
   if (releases.length === 0) {
     return (
       <div className="empty-state">
@@ -22,8 +27,20 @@ export function ReleaseList({ releases }: ReleaseListProps) {
 
   return (
     <div className="release-list">
-      {releases.map((release) => (
-        <article key={release.id} className="release-row">
+      {releases.map((release, index) => (
+        <motion.article
+          key={release.id}
+          className="release-row"
+          initial={reduceMotion ? false : { opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          whileHover={reduceMotion ? undefined : { x: 5 }}
+          transition={{
+            duration: reduceMotion ? 0 : 0.52,
+            delay: reduceMotion ? 0 : Math.min(index * 0.045, 0.18),
+            ease: [0.16, 1, 0.3, 1],
+          }}
+        >
           <div className="release-meta">
             <span className="release-tag">{release.tag}</span>
             <span>{formatDate(release.publishedAt)}</span>
@@ -65,7 +82,7 @@ export function ReleaseList({ releases }: ReleaseListProps) {
               Full notes
             </Link>
           </div>
-        </article>
+        </motion.article>
       ))}
     </div>
   );

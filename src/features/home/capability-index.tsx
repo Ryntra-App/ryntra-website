@@ -1,3 +1,7 @@
+"use client";
+
+import { motion, useReducedMotion } from "motion/react";
+
 const capabilities = [
   {
     title: "Publish",
@@ -18,6 +22,8 @@ const capabilities = [
 ] as const;
 
 export function CapabilityIndex() {
+  const reduceMotion = useReducedMotion();
+
   return (
     <section className="capability-index" aria-labelledby="capability-title">
       <div className="capability-intro">
@@ -30,11 +36,23 @@ export function CapabilityIndex() {
       </div>
       <ol>
         {capabilities.map((capability, index) => (
-          <li key={capability.title}>
-            <span>{String(index + 1).padStart(2, "0")}</span>
+          <motion.li
+            key={capability.title}
+            initial={reduceMotion ? false : { opacity: 0, x: 28 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.55 }}
+            transition={{
+              duration: reduceMotion ? 0 : 0.55,
+              delay: reduceMotion ? 0 : index * 0.06,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+          >
+            <span className="capability-number">
+              {String(index + 1).padStart(2, "0")}
+            </span>
             <h3>{capability.title}</h3>
             <p>{capability.body}</p>
-          </li>
+          </motion.li>
         ))}
       </ol>
     </section>

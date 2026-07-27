@@ -21,11 +21,15 @@ export function Hero() {
               <span className="hero-word-clip" aria-hidden="true" key={`${word}-${index}`}>
                 <motion.span
                   className="hero-word"
-                  initial={{ opacity: 0, y: reduceMotion ? 0 : "105%" }}
-                  animate={{ opacity: 1, y: 0 }}
+                  initial={{
+                    opacity: 0,
+                    y: reduceMotion ? 0 : "72%",
+                    filter: reduceMotion ? "none" : "blur(4px)",
+                  }}
+                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                   transition={{
-                    duration: reduceMotion ? 0 : 0.72,
-                    delay: reduceMotion ? 0 : 0.05 + index * 0.055,
+                    duration: reduceMotion ? 0 : 0.58,
+                    delay: reduceMotion ? 0 : 0.04 + index * 0.04,
                     ease: [0.16, 1, 0.3, 1],
                   }}
                 >
@@ -40,8 +44,8 @@ export function Hero() {
           initial={{ opacity: 0, y: reduceMotion ? 0 : 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
-            duration: reduceMotion ? 0 : 0.7,
-            delay: reduceMotion ? 0 : 0.38,
+            duration: reduceMotion ? 0 : 0.62,
+            delay: reduceMotion ? 0 : 0.32,
             ease: [0.16, 1, 0.3, 1],
           }}
         >
@@ -69,8 +73,8 @@ export function Hero() {
         initial={{ scaleX: reduceMotion ? 1 : 0 }}
         animate={{ scaleX: 1 }}
         transition={{
-          duration: reduceMotion ? 0 : 1,
-          delay: reduceMotion ? 0 : 0.58,
+          duration: reduceMotion ? 0 : 0.82,
+          delay: reduceMotion ? 0 : 0.44,
           ease: [0.16, 1, 0.3, 1],
         }}
       />

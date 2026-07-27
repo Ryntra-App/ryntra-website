@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { useState } from "react";
+import { type UIEvent, useState } from "react";
 
 const androidInterfaces = [
   {
@@ -70,9 +70,17 @@ type Platform = "android" | "ios";
 
 export function InterfaceShowcase() {
   const [platform, setPlatform] = useState<Platform>("android");
+  const [railProgress, setRailProgress] = useState(0);
   const reduceMotion = useReducedMotion();
   const interfaces =
     platform === "android" ? androidInterfaces : iosInterfaces;
+
+  function updateRailProgress(event: UIEvent<HTMLDivElement>) {
+    const rail = event.currentTarget;
+    const scrollableWidth = rail.scrollWidth - rail.clientWidth;
+
+    setRailProgress(scrollableWidth > 0 ? rail.scrollLeft / scrollableWidth : 0);
+  }
 
   return (
     <section
@@ -90,12 +98,17 @@ export function InterfaceShowcase() {
 
       <div className="platform-tabs" role="tablist" aria-label="Screenshot platform">
         {(["android", "ios"] as const).map((value) => (
-          <button
+          <motion.button
             type="button"
             role="tab"
             aria-selected={platform === value}
             key={value}
-            onClick={() => setPlatform(value)}
+            onClick={() => {
+              setPlatform(value);
+              setRailProgress(0);
+            }}
+            whileTap={reduceMotion ? undefined : { scale: 0.98 }}
+            transition={{ duration: 0.12 }}
           >
             {platform === value ? (
               <motion.span
@@ -108,7 +121,7 @@ export function InterfaceShowcase() {
               <strong>{value === "android" ? "Android" : "iOS"}</strong>
               <small>{value === "android" ? "Material 3" : "SwiftUI"}</small>
             </span>
-          </button>
+          </motion.button>
         ))}
       </div>
 
@@ -123,16 +136,26 @@ export function InterfaceShowcase() {
         >
           <nav className="showcase-index" aria-label={`${platform} product surfaces`}>
             {interfaces.map((item, index) => (
-              <a href={`#surface-${item.id}`} key={item.id}>
+              <motion.a
+                href={`#surface-${item.id}`}
+                key={item.id}
+                whileHover={reduceMotion ? undefined : { x: 4 }}
+                transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              >
                 <span>{String(index + 1).padStart(2, "0")}</span>
                 {item.label}
-              </a>
+              </motion.a>
             ))}
           </nav>
 
-          <div className="showcase-rail">
+          <div className="showcase-rail" onScroll={updateRailProgress}>
             {interfaces.map((item) => (
-              <figure id={`surface-${item.id}`} key={item.id}>
+              <motion.figure
+                id={`surface-${item.id}`}
+                key={item.id}
+                whileHover={reduceMotion ? undefined : { y: -7 }}
+                transition={{ duration: 0.34, ease: [0.16, 1, 0.3, 1] }}
+              >
                 <div className="showcase-image">
                   <Image
                     src={item.image}
@@ -147,8 +170,14 @@ export function InterfaceShowcase() {
                   <strong>{item.label}</strong>
                   <span>{item.description}</span>
                 </figcaption>
-              </figure>
+              </motion.figure>
             ))}
+          </div>
+          <div className="showcase-scroll-track" aria-hidden="true">
+            <motion.span
+              animate={{ scaleX: Math.max(0.12, railProgress) }}
+              transition={{ duration: reduceMotion ? 0 : 0.18, ease: "easeOut" }}
+            />
           </div>
         </motion.div>
       </AnimatePresence>

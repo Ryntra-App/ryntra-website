@@ -1,7 +1,7 @@
 "use client";
 
 import { Apple, Download, ExternalLink, Smartphone } from "lucide-react";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { useSearchParams } from "next/navigation";
 
 import type { Release, ReleaseAsset } from "@/features/releases/release.types";
@@ -19,11 +19,23 @@ export function DownloadOptions({
   iosAsset,
 }: DownloadOptionsProps) {
   const recommendation = useSearchParams().get("platform");
+  const reduceMotion = useReducedMotion();
+  const cardMotion = (index: number) => ({
+    initial: reduceMotion ? false : { opacity: 0, y: 28 },
+    animate: { opacity: 1, y: 0 },
+    whileHover: reduceMotion ? undefined : { y: -6 },
+    transition: {
+      duration: reduceMotion ? 0 : 0.52,
+      delay: reduceMotion ? 0 : 0.1 + index * 0.08,
+      ease: [0.16, 1, 0.3, 1] as const,
+    },
+  });
 
   return (
     <div className="download-options">
       <motion.article
         layout
+        {...cardMotion(0)}
         className={recommendation === "android" ? "is-recommended" : ""}
       >
         {recommendation === "android" ? (
@@ -55,6 +67,7 @@ export function DownloadOptions({
       </motion.article>
       <motion.article
         layout
+        {...cardMotion(1)}
         className={recommendation === "apple" ? "is-recommended" : ""}
       >
         {recommendation === "apple" ? (

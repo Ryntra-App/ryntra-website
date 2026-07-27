@@ -1,7 +1,7 @@
 "use client";
 
 import { ExternalLink, X } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
@@ -17,6 +17,7 @@ export function ChangelogModal({ release }: ChangelogModalProps) {
   const [isOpen, setIsOpen] = useState(false);
   const dialogRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
+  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
     if (!isOpen) return;
@@ -78,10 +79,27 @@ export function ChangelogModal({ release }: ChangelogModalProps) {
               role="dialog"
               aria-modal="true"
               aria-labelledby={`release-${release.id}-title`}
-              initial={{ opacity: 0, y: 12, scale: 0.99 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 8, scale: 0.99 }}
-              transition={{ duration: 0.18 }}
+              initial={{
+                opacity: 0,
+                y: reduceMotion ? 0 : 24,
+                scale: reduceMotion ? 1 : 0.985,
+                clipPath: reduceMotion ? "none" : "inset(0 0 8% 0 round 14px)",
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                clipPath: reduceMotion ? "none" : "inset(0 0 0% 0 round 14px)",
+              }}
+              exit={{
+                opacity: 0,
+                y: reduceMotion ? 0 : 12,
+                scale: reduceMotion ? 1 : 0.99,
+              }}
+              transition={{
+                duration: reduceMotion ? 0 : 0.32,
+                ease: [0.16, 1, 0.3, 1],
+              }}
             >
               <header>
                 <div>

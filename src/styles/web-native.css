@@ -1057,3 +1057,296 @@ body {
     grid-auto-columns: 88%;
   }
 }
+
+/* Motion language: directional, structural, and intentionally low-noise. */
+
+.route-transition {
+  min-height: 1px;
+}
+
+.page-intro-extra > .service-notice {
+  margin-top: 28px;
+}
+
+.desktop-navigation a {
+  position: relative;
+}
+
+.desktop-navigation a::after {
+  position: absolute;
+  right: 0;
+  bottom: 8px;
+  left: 0;
+  height: 1px;
+  background: var(--text-primary);
+  content: "";
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 240ms var(--ease-native);
+}
+
+.desktop-navigation a:hover::after,
+.desktop-navigation a:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.button {
+  position: relative;
+  overflow: hidden;
+}
+
+.button::after {
+  position: absolute;
+  inset: 0;
+  background: currentColor;
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(78%);
+  transition:
+    opacity 240ms var(--ease-native),
+    transform 240ms var(--ease-native);
+}
+
+.button:hover::after {
+  opacity: 0.08;
+  transform: translateY(0);
+}
+
+.download-options article {
+  transition:
+    border-color 260ms var(--ease-native),
+    box-shadow 260ms var(--ease-native);
+}
+
+.download-options article:hover {
+  border-color: color-mix(in oklch, var(--text-secondary) 42%, var(--separator));
+  box-shadow: 0 18px 44px color-mix(in oklch, var(--text-primary) 8%, transparent);
+}
+
+.download-options .platform-icon {
+  transition:
+    color 260ms var(--ease-native),
+    transform 260ms var(--ease-native);
+}
+
+.download-options article:hover .platform-icon {
+  color: var(--text-primary);
+  transform: scale(1.08) translateY(-2px);
+}
+
+.all-assets li,
+.release-page-assets a,
+.release-assets > a {
+  transition:
+    background-color 220ms var(--ease-native),
+    color 220ms var(--ease-native),
+    transform 220ms var(--ease-native);
+}
+
+.all-assets li:hover {
+  background: var(--surface-raised);
+}
+
+.all-assets li:hover > svg,
+.release-page-assets a:hover > svg,
+.release-assets > a:hover > svg {
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.all-assets li > svg,
+.release-page-assets a > svg,
+.release-assets > a > svg {
+  transition:
+    color 220ms var(--ease-native),
+    transform 220ms var(--ease-native);
+}
+
+.release-page-assets a:hover,
+.release-assets > a:hover {
+  color: var(--text-primary);
+  transform: translateX(5px);
+}
+
+.release-summary h2 a {
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-position: 100% 100%;
+  background-repeat: no-repeat;
+  background-size: 0 1px;
+  transition:
+    color 220ms var(--ease-native),
+    background-size 300ms var(--ease-native);
+}
+
+.release-summary h2 a:hover {
+  background-position: 0 100%;
+  background-size: 100% 1px;
+}
+
+.docs-index section {
+  position: relative;
+  isolation: isolate;
+}
+
+.docs-index section::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: var(--surface-raised);
+  content: "";
+  opacity: 0.58;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 320ms var(--ease-native);
+}
+
+.docs-index section:hover::before {
+  transform: scaleY(1);
+  transform-origin: top;
+}
+
+.docs-index section > svg {
+  transition: transform 300ms var(--ease-native);
+}
+
+.docs-index section:hover > svg {
+  transform: translateY(-4px) scale(1.08);
+}
+
+.docs-callout {
+  transition:
+    color 240ms var(--ease-native),
+    transform 320ms var(--ease-native);
+}
+
+.docs-callout:hover {
+  transform: translateY(-4px);
+}
+
+.legal-copy-motion > div {
+  max-width: 100%;
+}
+
+.legal-copy-motion > div:first-child p {
+  margin-top: 0;
+}
+
+.not-found-code svg {
+  animation: route-icon-draw 900ms var(--ease-native) both;
+  stroke-dasharray: 90;
+  stroke-dashoffset: 90;
+}
+
+.footer-inner nav a {
+  transition:
+    color 180ms var(--ease-native),
+    transform 220ms var(--ease-native);
+}
+
+.footer-inner nav a:hover {
+  color: var(--text-primary);
+  transform: translateX(4px);
+}
+
+@keyframes route-icon-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.showcase-image img {
+  transition: transform 560ms var(--ease-native);
+}
+
+.showcase-rail figure:hover .showcase-image img {
+  transform: scale(1.015);
+}
+
+.showcase-scroll-track {
+  width: 100%;
+  height: 1px;
+  margin-top: 8px;
+  overflow: hidden;
+  background: var(--separator);
+}
+
+.showcase-scroll-track span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--accent);
+  transform-origin: left;
+}
+
+.capability-index li {
+  position: relative;
+  isolation: isolate;
+  transition: color 240ms var(--ease-native);
+}
+
+.capability-index li::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: var(--surface-raised);
+  content: "";
+  opacity: 0.62;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 320ms var(--ease-native);
+}
+
+.capability-index li:hover::before,
+.capability-index li:focus-within::before {
+  transform: scaleY(1);
+  transform-origin: top;
+}
+
+.capability-index .capability-number {
+  transition:
+    color 220ms var(--ease-native),
+    transform 220ms var(--ease-native);
+}
+
+.capability-index li:hover .capability-number {
+  color: var(--accent);
+  transform: translateX(5px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .desktop-navigation a::after,
+  .button::after,
+  .showcase-image img,
+  .capability-index li::before,
+  .capability-index .capability-number,
+  .download-options article,
+  .download-options .platform-icon,
+  .all-assets li,
+  .release-page-assets a,
+  .release-assets > a,
+  .release-summary h2 a,
+  .docs-index section::before,
+  .docs-index section > svg,
+  .docs-callout,
+  .footer-inner nav a {
+    transition: none;
+  }
+
+  .showcase-rail figure:hover .showcase-image img,
+  .capability-index li:hover .capability-number,
+  .download-options article:hover .platform-icon,
+  .release-page-assets a:hover,
+  .release-assets > a:hover,
+  .docs-index section:hover > svg,
+  .docs-callout:hover,
+  .footer-inner nav a:hover {
+    transform: none;
+  }
+
+  .not-found-code svg {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
