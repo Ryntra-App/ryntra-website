@@ -412,7 +412,8 @@ body {
 
 .showcase-image {
   position: relative;
-  height: 470px;
+  width: 100%;
+  aspect-ratio: 9 / 19.5;
   overflow: hidden;
   border: 1px solid var(--separator);
   border-radius: 8px;
@@ -421,12 +422,8 @@ body {
 
 .showcase-image img {
   width: 100%;
-  height: auto;
-  transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.showcase-rail figure:hover .showcase-image img {
-  transform: scale(1.018);
+  height: 100%;
+  object-fit: contain;
 }
 
 .showcase-rail figcaption {
@@ -901,10 +898,6 @@ body {
 
   .showcase-rail {
     grid-auto-columns: 82%;
-  }
-
-  .showcase-image {
-    height: 430px;
   }
 
   .showcase-rail figcaption {
